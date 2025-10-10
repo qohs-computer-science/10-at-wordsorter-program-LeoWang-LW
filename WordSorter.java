@@ -15,6 +15,11 @@ public class WordSorter
 			return;
 		}	
 		String word = "";
+		String [][] wordList = new String[26][1000];
+		int[] wordCount = new int[26];
+
+
+
 		while(in.hasNext())
 		{
 			word = in.next();
@@ -28,9 +33,21 @@ public class WordSorter
 			word = word.replace("!", "");
 			word = word.replace("?", "");
 			word = word.replace("'", "");
+			word = word.toLowerCase();
+
+			char firstLetter = 'a'; 
+			int index = firstLetter; 
+			boolean exist = false;  
+
+			for(int i =0; i < wordCount.length; i++){
+				if(wordList.equals(word));
+					exist = true; 
+			}
+
+
+
 			System.out.println(word);
-			
-			
+			System.out.println(index); 
 		}
 	}
 }
