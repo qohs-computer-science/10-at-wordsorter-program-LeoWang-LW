@@ -1,5 +1,6 @@
 import java.io.File;
 import java.util.Scanner;
+import java.util.ArrayList; 
 public class WordSorter 
 {
 	public static void main(String[] args) 
@@ -14,11 +15,11 @@ public class WordSorter
 			System.out.println("Cannot find file... Exiting Program");
 			return;
 		}	
+
 		String word = "";
-		String [][] wordList = new String[26][1000];
-		int[] wordCount = new int[26];
-
-
+		ArrayList [] wordList = new ArrayList [26];
+		for(int x =0; x < wordList.length; x++)
+			wordList[x] = new ArrayList <String>(); 
 
 		while(in.hasNext())
 		{
@@ -34,20 +35,20 @@ public class WordSorter
 			word = word.replace("?", "");
 			word = word.replace("'", "");
 			word = word.toLowerCase();
+		
+			int index = word.substring(0,1).compareTo("a"); 
+			wordList[index].add(word); 
 
-			char firstLetter = 'a'; 
-			int index = firstLetter; 
-			boolean exist = false;  
-
-			for(int i =0; i < wordCount.length; i++){
-				if(wordList.equals(word));
-					exist = true; 
+			for(int i = 0; i < wordList.length; i++){
+				for(String temp: wordList.get(i))
+					if(wordList[i].equals(temp))
+						wordList[i].remove(i);
 			}
-
-
-
-			System.out.println(word);
-			System.out.println(index); 
+			
 		}
+		for (int x = 0; x < wordList.length; x++) {
+		System.out.println(wordList[x]);
+		}
+
 	}
 }
